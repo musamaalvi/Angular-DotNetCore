@@ -4,11 +4,10 @@ using System.Collections.Generic;
 namespace DotNetCore.Controllers
 {
 
-
     [Route("api/[Controller]")]
     public class testController : Controller
     {
-        [HttpGet("/api/values")]
+        [HttpGet]
         public IEnumerable<string> Get(){
             return new string [] {"a","b","c" };
         }
