@@ -8,11 +8,26 @@ namespace DotNetCore.Controllers
     public class testController : Controller
     {
         [HttpGet]
-        public IEnumerable<string> Get(){
-            return new string [] {"a","b","c" };
+        public IActionResult Get(){
+            return Ok(new string [] {"a","b","c" });
         }
 
         [HttpGet("{id}")]
-        public string Get(int id) => $"Returning the called id: {id}" ;
+        public IActionResult Get(int id) => Ok($"Returning the called id: {id}");
+
+
+        [HttpPost, Route("testingFunction/testing")]
+        public IActionResult testing([FromBody] dataClass value){
+
+
+            return CreatedAtAction("Get",value);
+        }
+
+        
+    }
+
+    public class dataClass {
+        public int id ;
+        public string value;
     }
 }
